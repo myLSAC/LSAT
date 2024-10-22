@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSAC - My Scores</title>
+    <!-- Link to Google Fonts for Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* General reset and layout */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f9fb;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* White bar with logo and navigation links */
+        .white-bar {
+            background-color: white;
+            padding: 0px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #4A90E2;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Special styling for "Sign out..." link */
+        .nav-links .dropdown {
+            position: relative;
+        }
+
+        .nav-links a.sign-out {
+            background-color: #003366;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-weight: 500;
+            display: inline-block;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .nav-links a.sign-out:hover {
+            background-color: #002244;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%; /* Positioned right under the "Sign out..." text */
+            left: 0;
+            background-color: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 10px 0;
+            z-index: 1000;
+            width: 150px;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Show the dropdown menu when hovering over Sign out */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        header {
+            background-color: #003d80;
+            color: white;
+            padding: 25px 0;
+            display: flex;
+            justify-content: space-between;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        .blue-bar-links {
+            display: flex;
+            gap: 50px;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .blue-bar-links a {
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            font-weight: 500;
+            text-align: center;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .blue-bar-links a.search-link {
+            background-color: white;
+            color: lightgray;
+            border-radius: 8px;
+            padding: 8px 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .blue-bar-links a.search-link:hover {
+            background-color: #f0f0f0;
+        }
+
+        .blue-bar-links a.search-link img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .blue-bar-links a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            text-align: center;
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #003366;
+            font-weight: 700;
+        }
+
+        .container a.new-scores {
+            font-size: 20px;
+            text-decoration: none;
+            color: red;
+            font-weight: 400;
+        }
+
+        .container a.october-2024 {
+            font-size: 16px;
+            text-decoration: none;
+            color: black;
+            display: none;
+            margin-top: 10px;
+        }
+
+        .container a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+    </style>
+    <!-- Importing Confetti JS -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div class="white-bar">
+        <img src="https://i.postimg.cc/bGvj7LDg/lsac-logo.png" alt="LSAC Logo">
+        <div class="nav-links">
+            <a href="#">About LSAC</a>
+            <a href="#">Events</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact Us</a>
+            <div class="dropdown">
+                <a href="#" class="sign-out">Sign out...</a>
+                <!-- Dropdown Menu -->
+                <div class="dropdown-menu">
+                    <a href="#">Henri Nuni</a> <!-- Changed Profile to Henri Nuni -->
+                    <a href="#">Settings</a>
+                    <a href="#">Log out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="blue-bar-links">
+            <a href="#">Discover<br>Law</a>
+            <a href="#">LSAT</a>
+            <a href="#">LawHub</a>
+            <a href="#">Choosing a Law<br>School</a>
+            <a href="#">Applying to Law<br>School</a>
+            <a href="#">Resources for<br>Schools</a>
+            <a href="#" class="search-link">
+                Search
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg" alt="Search">
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>View My Scores</h2>
+        <a href="javascript:void(0)" class="new-scores" onclick="showNewScores()">New Scores Available</a>
+        <br>
+        <a href="javascript:void(0)" class="october-2024" id="october2024" onclick="showScore()">October 2024</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Law School Admission Council</p>
+    </footer>
+
+    <script>
+        // Function to display the "October 2024" link when "New Scores Available" is clicked
+        function showNewScores() {
+            var octoberLink = document.getElementById("october2024");
+            octoberLink.style.display = "block";
+        }
+
+        // Function to show the alert and trigger confetti at the same time
+        function showScore() {
+            // Trigger confetti
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+
+            // Show the alert with the score
+            alert('Your Score: 175');
+        }
+    </script>
+
+</body>
+</html>
